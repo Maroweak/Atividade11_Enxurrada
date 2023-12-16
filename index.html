@@ -1,0 +1,215 @@
+<script>
+
+function multiplicarNumeros(num1, num2) {
+    return num1 * num2;
+  }
+  
+function calcularPotencia(base, expoente){
+    return Math.pow(base, expoente);
+}
+
+function calcularIdade(nascimento){
+const ano = 2023;
+
+return ano - nascimento;
+
+}
+
+function sistemaBancario(saldo, compra, valorCompra){
+    if (saldo >= valorCompra) {
+    let saldoAtual = saldo - valorCompra;
+    alert(`A compra foi concluída corretamente! Seu saldo agora é de: R$ ${saldoAtual}`);
+    alert(`Obrigado por comprar conosco!`);
+    return saldoAtual;
+  } else {
+    alert(`Saldo insuficiente`);
+    return saldo;
+  }
+}
+
+function Calculadora(num1, num2, operacao) {
+
+    if (operacao == "+") {
+        return  num1 + num2;
+        
+    } else if (operacao == "-") {
+       return num1 - num2;
+
+    } else if (operacao == "*") {
+        return num1 * num2;
+        
+    } else if (operacao == "/") {
+        return num1 / num2;
+        
+    } else {
+        alert("Operação inválida");
+    }
+}
+
+function reajustarSalario(salario) {
+
+    if (isNaN(salario) || salario <= 0) {
+        alert("Digite um salário válido.");
+        return;
+    }
+
+    let salario_reajustado = 0;
+    let aumento = 0;
+
+    if (salario <= 280) {
+        aumento = salario * 20 / 100;
+    } else if (salario < 700) {
+        aumento = salario * 15 / 100;
+    }
+
+else if (salario < 1500) {
+        aumento = salario * 10 / 100;
+    } else {
+        aumento = salario * 5 / 100;
+    }
+
+    return salario + aumento;
+}
+
+function tiposTriangulo(a, b, c) {
+
+    if (a + b > c && a + c > b && b + c > a) {
+
+        if (a === b && b === c) {
+            return "Triângulo Equilátero";
+
+        } else if (a === b || a === c || b === c) {
+            return "Triângulo Isósceles";
+
+        } else {
+            return "Triângulo Escaleno";
+
+        }
+    } else {
+        return  "Não é um triângulo";
+    }
+
+}
+
+
+
+
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funções</title>
+   
+</head>
+<body>
+    <script>
+    
+    let metodo = parseInt(prompt(
+    "Qual será o método desejado?\n" +
+    "1. Multiplicação entre 2 números\n" +
+    "2. Cálculo de Potência\n" +
+    "3. Cálculo de Idade\n" +
+    "4. Sistema Bancário\n" +
+    "5. Calculadora básica completa\n" +
+    "6. Aumento de salário\n" +
+    "7. Triângulos"
+));
+
+    if(metodo == 1){
+
+        let num1 = parseInt(prompt("Digite o primeiro número: "));
+        let num2 = parseInt(prompt("Digite o segundo número: "));
+
+        var resultado = multiplicarNumeros(num1, num2);
+        alert(resultado);
+       
+       }
+
+       else if(metodo == 2){
+
+        let base = parseInt(prompt("Digite a base: "));
+        let expoente = parseInt(prompt("Digite o expoente: "));
+
+        var resultado = calcularPotencia(base, expoente);
+        alert(resultado);
+
+       }
+
+       else if(metodo == 3){
+        let nome = prompt('Digite seu nome: ');
+        let nascimento = parseInt(prompt('Digite o ano que você nasceu: '));
+        
+        var resultado = calcularIdade(nascimento);
+        alert(`Olá, ${nome}, sua idade é de: ` + resultado + ` anos.`);
+
+
+       }
+
+       else if(metodo == 4){
+
+       let saldo = prompt("Qual é o seu saldo? (Apenas números): ");
+       alert(`Seu saldo é: R$ ${saldo}`);
+
+       let compra = prompt(`O que deseja comprar? (Lembrando que seu saldo é de R$${saldo})\n1. Televisão R$1200\n2. Bicicleta R$600\n3. Ventilador R$150`);
+       let novoSaldo = 0;
+
+       switch (compra) {
+       case "1":
+        novoSaldo = sistemaBancario(parseInt(saldo), 1, 1200);
+        break;
+
+        case "2":
+        novoSaldo = sistemaBancario(parseInt(saldo), 2, 600);
+        break;
+
+        case "3":
+        novoSaldo = sistemaBancario(parseInt(saldo), 3, 150);
+        break;
+
+        default:
+        alert("Opção de compra inválida");
+        window.location.reload();
+
+       }
+       }
+
+       else if(metodo == 5){
+        let num1 = parseFloat(prompt(`Qual será o primeiro numero da operação?`));
+        let num2 = parseFloat(prompt(`Qual será o segundo numero da operação?`));
+        let operacao = prompt(`Qual será a operação a ser realizada?`);
+
+        var resultado = Calculadora(num1,num2,operacao);
+        alert("O resultado da operação desejada é: " + resultado);
+       }
+
+
+       else if(metodo == 6){
+        let salario = parseFloat(prompt("Qual é o seu salário?: "))
+
+        var salario_novo = reajustarSalario(salario);
+        alert("Seu novo salário aós o reajuste é de: " + salario_novo);
+
+       }
+
+       else if(metodo == 7){
+        a = parseInt(prompt("Digite o primeiro lado do triângulo: "))
+        b = parseInt(prompt("Digite o segundo lado do triângulo: "))
+        c = parseInt(prompt("Digite o terceiro lado do triângulo: "))
+
+        var tipo_triangulo = tiposTriangulo(a,b,c);
+        alert("O triângulo é do tipo: " + tipo_triangulo);
+       }
+
+       
+       else{
+        alert("Escolha um número válido");
+        window.location.reload();
+       }    
+
+</script>
+</body>
+</html>
